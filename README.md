@@ -14,7 +14,7 @@ This tool offers many different optimizations such as a bundling, code splitting
 
 #### How does Lasso achieve this ?
 
-Lasso.js supports asynchronously loading dependencies using the lightweight [raptor-loader](https://github.com/raptorjs/raptor-loader/blob/master/lib/raptor-loader.js). During optimization, Lasso.js detects the call to require('raptor-loader').async(...) and transforms the code such that the function is not invoked until all of the required modules referenced in the body of callback function are completely loaded.
+Lasso.js supports asynchronously loading dependencies using the lightweight [raptor-loader](https://github.com/raptorjs/raptor-loader/blob/master/lib/raptor-loader.js). During optimization, Lasso.js detects the call to `require('raptor-loader').async(...)` and transforms the code such that the function is not invoked until all of the required modules referenced in the body of callback function are completely loaded.
 
 
 #### How to install this sample project ?
