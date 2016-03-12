@@ -105,4 +105,8 @@ The complete configuration of lasso js is available at [Lasso JS configuration](
 
 #### How to test the lassoed result of my-page.html ?
 
-To test, open the updated `./my-page.html` file in your web browser. Check the developer console for jquery, add.js and style.less. They would not have loaded as yet. Click on the **Run async** button. Check the developer console's Network tab. The 3 dependencies `main.js`, `jquery.js` and `style.css` are loaded asynchronously on-demand. (style.less is compiled by [lasso-less](https://github.com/lasso-js/lasso-less))  
+* To test, open the updated `./my-page.html` file in your web browser. Check the developer console for `jquery`, `add.js` and `style.css`. They would not have loaded as yet.
+
+* Click on the **Run async** button.
+
+* Check the developer console's *Network* tab. The 3 dependencies `main.js`, `jquery.js` and `style.css` are loaded asynchronously on-demand. (style.less is compiled by [lasso-less](https://github.com/lasso-js/lasso-less))  
