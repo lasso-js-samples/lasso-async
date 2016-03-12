@@ -2,7 +2,8 @@
 
 #### What does this example do ?
 
-> This example project is to explain how to use [Lasso JS](https://github.com/lasso-js/lasso) to asynchronously load dependencies on-demand as and when required. Lasso.js supports asynchronously loading dependencies using the lightweight [raptor-loader](https://github.com/raptorjs/raptor-loader/blob/master/lib/raptor-loader.js). During optimization, Lasso.js detects the call to require('raptor-loader').async(...) and transforms the code such that the function is not invoked until all of the required modules referenced in the body of callback function are completely loaded.
+> This example project is to explain how to use [Lasso JS](https://github.com/lasso-js/lasso) to asynchronously load dependencies on-demand as and when required. [Learn more](https://github.com/lasso-js/lasso#asynchronouslazy-loading) about asynchronously loading dependencies.
+
 
 #### What is Lasso JS ?
 
@@ -10,7 +11,13 @@
 
 This tool offers many different optimizations such as a bundling, code splitting, lazy loading, conditional dependencies, compression, JS / CSS / IMG minifications, Base64 image encoding, and fingerprinted resource URLs. Plugins are provided to support pre-processors and compilers such as Less, Stylus and [Marko](http://markojs.com).
 
-#### How to install this ?
+
+#### How does Lasso achieve this ?
+
+Lasso.js supports asynchronously loading dependencies using the lightweight [raptor-loader](https://github.com/raptorjs/raptor-loader/blob/master/lib/raptor-loader.js). During optimization, Lasso.js detects the call to require('raptor-loader').async(...) and transforms the code such that the function is not invoked until all of the required modules referenced in the body of callback function are completely loaded.
+
+
+#### How to install this sample project ?
 
 ```bash
 git clone https://github.com/lasso-js-samples/lasso-async.git
