@@ -90,6 +90,8 @@ Running the above command will result in JavaScript and CSS bundles being writte
 
 The dependencies required to build `./my-page.html` via Lasso is mentioned inside the `dependencies` key of the `./my-page.browser.json`. In this case, only the `./main.js` file is listed as a dependency. Modules required by this file are included inside the **('raptor-loader').async(...)** which takes care of asynchronously downloading them on-demand.
 
+`./style.less` is not mentioned in the dependencies, since it will be loaded asynchronously.
+
 **Other configuration options :**
 
 Since `./add.js`, `jquery.js` are loaded asynchronously, they are not required to be bundled. So, the `bundlingEnabled` property of the `./lasso-config.json` is set to FALSE.
@@ -103,4 +105,4 @@ The complete configuration of lasso js is available at [Lasso JS configuration](
 
 #### How to test the lassoed result of my-page.html ?
 
-To test, open the updated `./my-page.html` file in your web browser. Check the developer console for jquery, add.js and style.less. They would not have loaded as yet. Click on the **Run async** button. Check the developer console's Network tab. The 3 dependencies main.js, jquery.js and style.css are loaded asynchronously on-demand. (style.less is compiled by [lasso-less](https://github.com/lasso-js/lasso-less))  
+To test, open the updated `./my-page.html` file in your web browser. Check the developer console for jquery, add.js and style.less. They would not have loaded as yet. Click on the **Run async** button. Check the developer console's Network tab. The 3 dependencies `main.js`, `jquery.js` and `style.css` are loaded asynchronously on-demand. (style.less is compiled by [lasso-less](https://github.com/lasso-js/lasso-less))  
