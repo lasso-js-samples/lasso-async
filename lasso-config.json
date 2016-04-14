@@ -3,9 +3,9 @@
     "plugins": [
         "lasso-less"
     ],
-    "outputDir": "static",
+    "outputDir": "build/static/",
     "fingerprintsEnabled": false,
-    "urlPrefix": "./static",
+    "urlPrefix": "/static",
     "minify": false,
     "resolveCssUrls": true,
     "bundlingEnabled": false

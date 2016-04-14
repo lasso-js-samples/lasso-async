@@ -2,7 +2,7 @@ var buttonEl = document.getElementById('runButton');
 buttonEl.addEventListener('click', function() {
     // Asynchronously load the "./add" and "jquery" modules, as well
     // as the "style.less" file:
-    require('raptor-loader').async(
+    require('lasso-loader').async(
         ['style.less'],
         function() {
             // Everything that is required within this function will be

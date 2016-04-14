@@ -8,8 +8,6 @@
 .DS_Store
 coverage
 *.marko.js
-*.dust.js
-*.hbs.js
 /.cache
 /static
 
