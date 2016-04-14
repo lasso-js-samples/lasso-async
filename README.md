@@ -1,23 +1,21 @@
-# lasso-async
+lasso-async
+===========
 
-#### What does this example do ?
+## What does this example do?
 
-> This example project is to explain how to use [Lasso JS](https://github.com/lasso-js/lasso) to asynchronously load dependencies on-demand as and when required. [Learn more](https://github.com/lasso-js/lasso#asynchronouslazy-loading) about asynchronously loading dependencies.
+This example project is to explain how to use [Lasso.js](https://github.com/lasso-js/lasso) to asynchronously/lazily load dependencies on-demand. To learn more about asynchronously/lazily loading addiitonal JavaScript and CSS bundles, please see the Lasso.js docs:[Lasso.js » Asynchronous/Lazy loading](https://github.com/lasso-js/lasso#asynchronouslazy-loading)
 
+## What is Lasso.js?
 
-#### What is Lasso JS ?
+[Lasso.js](https://github.com/lasso-js/lasso) is an eBay open source Node.js-style JavaScript module bundler and asset pipeline that also provides first-level support for optimally delivering JavaScript, CSS, images and other assets to the browser.
 
-[Lasso JS](https://github.com/lasso-js/lasso) is an eBay open source Node.js-style JavaScript module bundler that also provides first-level support for optimally delivering JavaScript, CSS, images and other assets to the browser.
+This tool offers many different optimizations such as a bundling, code splitting, lazy loading, conditional dependencies, compression, JS/CSS/IMG minification, Base64 image encoding, and fingerprinted resource URLs. Plugins are provided to support pre-processors and compilers such as Less, Stylus and [Marko](http://markojs.com).
 
-This tool offers many different optimizations such as a bundling, code splitting, lazy loading, conditional dependencies, compression, JS / CSS / IMG minifications, Base64 image encoding, and fingerprinted resource URLs. Plugins are provided to support pre-processors and compilers such as Less, Stylus and [Marko](http://markojs.com).
+## Async/lazy loading
 
+Lasso.js supports asynchronously loading dependencies using the lightweight [lasso-loader](https://github.com/lasso-js/lasso-loader) module. During optimization, Lasso.js detects the call to `require('lasso-loader').async(...)` and transforms the code such that the function is not invoked until all of the required modules referenced in the body of callback function are completely loaded.
 
-#### How does Lasso achieve this ?
-
-Lasso.js supports asynchronously loading dependencies using the lightweight [raptor-loader](https://github.com/raptorjs/raptor-loader/blob/master/lib/raptor-loader.js). During optimization, Lasso.js detects the call to `require('raptor-loader').async(...)` and transforms the code such that the function is not invoked until all of the required modules referenced in the body of callback function are completely loaded.
-
-
-#### How to install this sample project ?
+## Install
 
 ```bash
 git clone https://github.com/lasso-js-samples/lasso-async.git
@@ -31,82 +29,107 @@ This sample app uses a local installation of the [lasso-cli](https://github.com/
 npm install lasso-cli --global
 ```
 
-#### How to run this example ?
+## Run
 
 To run this example, navigate to the project root on your terminal and type
 
-```````````
-
-./run.sh
-```````````
+```bash
+npm start
+```
 
 You should see an output similar to the one below :
 
-````````````
-Optimizing page "my-page"...
-Successfully lassoed page "my-page"!
-````````````
-````````````
+```
+lasso-js-samples/lasso-async (master)> npm start
+
+> lasso-async@0.0.0 start /Users/psteeleidem/development/github/lasso-js-samples/lasso-async
+> npm run build && http-server build/
+
+
+> lasso-async@0.0.0 build /Users/psteeleidem/development/github/lasso-js-samples/lasso-async
+> ./build.sh
+
+Config:
+{
+    "plugins": [
+        "lasso-less"
+    ],
+    "outputDir": "/Users/psteeleidem/development/github/lasso-js-samples/lasso-async/build/static",
+    "fingerprintsEnabled": false,
+    "urlPrefix": "/static",
+    "minify": false,
+    "resolveCssUrls": true,
+    "bundlingEnabled": false
+}
+
+Optimizing page "app"...
+Successfully lassoed page "app"!
 ------------------------------------
-````````````
-````````````
-Output for page "my-page":
+Output for page "app":
   Resource bundle files:
-    static/add.js
-    static/raptor-modules-meta-my-page-async.js
-    static/node_modules/jquery/dist/jquery.js
-    static/raptor-modules-1.3.1/client/lib/raptor-modules-client.js
-    static/raptor-modules-meta-my-page.js
-    static/process-0.6.0/browser.js
-    static/loader-metadata-my-page.js
-    static/raptor-util-1.0.10/extend.js
-    static/raptor-loader-1.0.5/lib/resource-loader.js
-    static/events-1.1.0/events.js
-    static/raptor-loader-1.0.5/lib/raptor-loader.js
-    static/main.js
-    static/main-run-my-page.js
-    static/less-my-page-async.css
+    build/static/app-async/lasso-async$0.0.0/src/add.js
+    build/static/app-async/lasso-modules-meta.js
+    build/static/app-async/jquery$2.2.3/dist/jquery.js
+    build/static/app/lasso-modules-client$1.0.0/src/index.js
+    build/static/app/lasso-modules-meta.js
+    build/static/loader-metadata-app.js
+    build/static/app/raptor-util$1.0.10/extend.js
+    build/static/app/lasso-loader$2.0.0/src/resource-loader.js
+    build/static/app/events$1.1.0/events.js
+    build/static/app/lasso-loader$2.0.0/src/index.js
+    build/static/app/lasso-async$0.0.0/src/main.js
+    build/static/app/lasso-async$0.0.0/src/main-run.js
+    build/static/less-app-async.css
   HTML slots file:
-    build/my-page.html.json
+    build/app.html.json
   Updated HTML file:
-    my-page.html
-
-````````````
-````````````
+    build/index.html
 ------------------------------------
-````````````
-````````````
+
 All pages successfully built!
-````````````
-````````````
-Open './my-page.html' to see the result!
-````````````
+Starting up http-server, serving build/
+Available on:
+  http://127.0.0.1:8080
+  http://10.0.1.4:8080
+  http://10.0.1.15:8080
+  http://10.237.178.240:8080
+Hit CTRL-C to stop the server
+```
 
+Open your browser and visit `http://localhost:8080/` to see the resulting page. Click on the button to lazily load the additional CSS and JavaScript bundles.
 
-#### What is the contents of the configuration file ?
+## Additional details
 
-The configuration file to run lasso is `./lasso-config.json`.
-Running the above command will result in JavaScript and CSS bundles being written out to the `./static` directory.
+For this sample app, lasso is configured to use the configuration file at `./lasso-config.json`.
+Running the above command will result in JavaScript and CSS bundles being written out to the `build/static/` directory.
 
-The dependencies required to build `./my-page.html` via Lasso is mentioned inside the `dependencies` key of the `./my-page.browser.json`. In this case, only the `./main.js` file is listed as a dependency. Modules required by this file are included inside the **('raptor-loader').async(...)** which takes care of asynchronously downloading them on-demand.
+The JavaScript and CSS dependencies for `src/index.html` are declared in `src/browser.json`. There is only a single `"require-run: ./main"` dependency for this app. This dependency is used to declare the main entry for our JavaScript application. The main entry script is automatically required using the JavaScript module loader to be executed. Our main entry script uses `require('lasso-loader').async(...)` to lazily load additional JavaScript and CSS resources:
 
-`./style.less` is not mentioned in the dependencies, since it will be loaded asynchronously.
+```javascript
+// Asynchronously load the "./add" and "jquery" modules, as well
+// as the "style.less" file:
+require('lasso-loader').async(
+    ['style.less'],
+    function() {
+        // Everything that is required within this function will be
+        // asynchronously downloaded. Any additional dependencies passed
+        // in using the first argument to the async method will also
+        // be asynchronously downloaded. Whenever thing has been loaded
+        // by the web broweer the following code will run. If all of
+        // the dependencies have already been downloaded then the function
+        // will be invoked immediately.
+        var add = require('./add');
+        var jquery = require('jquery');
 
-**Other configuration options :**
+        var now = new Date().toString();
+        var html = '2+2=' + add(2, 2) + ' (' + now + ')';
 
-Since `./add.js`, `jquery.js` are loaded asynchronously, they are not required to be bundled. So, the `bundlingEnabled` property of the `./lasso-config.json` is set to FALSE.
+        jquery('#target').html(html);
+    });
+```
 
 To check out other configurations, be sure to check out the [sample project](https://github.com/lasso-js-samples/lasso-config)
 
-In addition, the [my-page.html](https://github.com/lasso-js-samples/lasso-config/blob/master/my-page.html) file will be updated with the required `<script>` and `<link>` tags to include the required external resources.
+In addition, the [index.html](https://github.com/lasso-js-samples/lasso-async/blob/master/src/index.html) file will be copied to the build directory and updated with the required `<script>` and `<link>` tags to include the required JavaScript and CSS bundles.
 
-The complete configuration of lasso js is available at [Lasso JS configuration](https://github.com/lasso-js/lasso#configuration)
-
-
-#### How to test the lassoed result of my-page.html ?
-
-* To test, open the updated `./my-page.html` file in your web browser. Check the developer console for `jquery`, `add.js` and `style.css`. They would not have loaded as yet.
-
-* Click on the **Run async** button.
-
-* Check the developer console's *Network* tab. The 3 dependencies `main.js`, `jquery.js` and `style.css` are loaded asynchronously on-demand. (style.less is compiled by [lasso-less](https://github.com/lasso-js/lasso-less))  
+The complete set of configuration options is available in the Lasso.js docs: [Lasso.js » Configuration](https://github.com/lasso-js/lasso#configuration)

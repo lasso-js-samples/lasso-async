@@ -6,7 +6,7 @@ buttonEl.addEventListener('click', function() {
         ['style.less'],
         function() {
             // Everything that is required within this function will be
-            // asynchronously downloaded. In additional dependencies passed
+            // asynchronously downloaded. Any additional dependencies passed
             // in using the first argument to the async method will also
             // be asynchronously downloaded. Whenever thing has been loaded
             // by the web broweer the following code will run. If all of
